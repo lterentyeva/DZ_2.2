@@ -25,7 +25,7 @@ public class CardDelivery {
 
     @Test
     void shouldSuccessfulSending() {
-        String mittingData = nextDate(3);
+        String mittingData = nextDate(5);
         Configuration.holdBrowserOpen = true;
         open("http://localhost:9999");
         $("input[placeholder=\"Город\"]").val("Санкт-Петербург");
