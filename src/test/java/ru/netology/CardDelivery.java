@@ -1,5 +1,6 @@
 package ru.netology;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.Test;
 
@@ -34,6 +35,7 @@ public class CardDelivery {
         $("input[name=\"phone\"]").val("+79111234567");
         $("[data-test-id=agreement] span").click();
         $x("//span[text()=\"Забронировать\"]").click();
-        $x("//*[contains(text(),\"Встреча успешно забронирована на \")]").should(visible, Duration.ofSeconds(15));
+        $("[data-test-id=notification]").shouldHave(visible, Duration.ofSeconds(15));
+        $("[data-test-id=notification]").shouldHave(Condition.text("Встреча успешно забронирована на " + mittingData));
     }
 }
